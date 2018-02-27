@@ -1,0 +1,447 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>Sudoku game</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/flipclock.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid">
+			<header class = "row header">
+				<h1 id="headding">Sudoku game</h1>
+			</header>
+			<div class="row diff-panel">
+				<p style="padding-bottom: 10px">Click on difficulty label to start new game</p>
+				<ul id="difflist">
+					<li><span class="label label-success">Easy</span></li>
+					<li><span class="label label-warning">Moderate</span></li>
+					<li><span class="label label-danger">Hardcore</span></li>
+				</ul>
+			</div>
+
+			<div class="row board">
+				<div id="settings">
+					<h2>Settings</h2>
+					<h4 class="settings-label">Hints :  </h4><input class="switch" id="hint-switcher" type="checkbox" checked data-toggle="toggle"></br>
+					<h4 class="settings-label">Timer :</h4><input class="switch" id="timer-switcher" type="checkbox" checked data-toggle="toggle">
+				</div>
+				<div class="board-wrapper">
+					<table cellpadding="0" cellspacing="0"  class="main-board">
+						<tbody>
+							<tr>
+								<td>
+									<table class="inner-board gr">
+										<tbody>
+											<tr>
+												<td class="inner-cell 1">
+
+													<span></span>
+												</td>
+												<td class="inner-cell 2">
+
+													<span></span>
+												</td>
+												<td class="inner-cell 3">
+													<span></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="inner-cell 10">
+													<span></span>
+												</td>
+												<td class="inner-cell 11">
+													<span></span>
+												</td>
+												<td class="inner-cell 12">
+													<span></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="inner-cell 19">
+													<span></span>
+												</td>
+												<td class="inner-cell 20">
+													<span></span>
+												</td>
+												<td class="inner-cell 21">
+													<span></span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+								<td>
+									<table class="inner-board">
+										<tbody>
+											<tr>
+												<td class="inner-cell 4">
+													<span></span>
+												</td>
+												<td class="inner-cell 5">
+													<span></span>
+												</td>
+												<td class="inner-cell 6">
+													<span></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="inner-cell 13">
+													<span></span>
+												</td>
+												<td class="inner-cell 14">
+													<span></span>
+												</td>
+												<td class="inner-cell 15">
+													<span></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="inner-cell 22">
+													<span></span>
+												</td>
+												<td class="inner-cell 23">
+													<span></span>
+												</td>
+												<td class="inner-cell 24">
+													<span></span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+								<td>
+									<table class="inner-board gr">
+										<tbody>
+											<tr>
+												<td class="inner-cell 7">
+													<span></span>
+												</td>
+												<td class="inner-cell 8">
+													<span></span>
+												</td>
+												<td class="inner-cell 9">
+													<span></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="inner-cell 16">
+													<span></span>
+												</td>
+												<td class="inner-cell 17">
+													<span></span>
+												</td>
+												<td class="inner-cell 18">
+													<span></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="inner-cell 25">
+													<span></span>
+												</td>
+												<td class="inner-cell 26">
+													<span></span>
+												</td>
+												<td class="inner-cell 27">
+													<span></span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<table class="inner-board">
+										<tbody>
+											<tr>
+												<td class="inner-cell 28">
+													<span></span>
+												</td>
+												<td class="inner-cell 29">
+													<span></span>
+												</td>
+												<td class="inner-cell 30">
+													<span></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="inner-cell 37">
+													<span></span>
+												</td>
+												<td class="inner-cell 38">
+													<span></span>
+												</td>
+												<td class="inner-cell 39">
+													<span></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="inner-cell 46">
+													<span></span>
+												</td>
+												<td class="inner-cell 47">
+													<span></span>
+												</td>
+												<td class="inner-cell 48">
+													<span></span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+								<td>
+									<table class="inner-board gr">
+										<tbody>
+											<tr>
+												<td class="inner-cell 31">
+													<span></span>
+												</td>
+												<td class="inner-cell 32">
+													<span></span>
+												</td>
+												<td class="inner-cell 33">
+													<span></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="inner-cell 40">
+													<span></span>
+												</td>
+												<td class="inner-cell 41">
+													<span></span>
+												</td>
+												<td class="inner-cell 42">
+													<span></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="inner-cell 49">
+													<span></span>
+												</td>
+												<td class="inner-cell 50">
+													<span></span>
+												</td>
+												<td class="inner-cell 51">
+													<span></span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+								<td>
+									<table class="inner-board">
+										<tbody>
+											<tr>
+												<td class="inner-cell 34">
+													<span></span>
+												</td>
+												<td class="inner-cell 35">
+													<span></span>
+												</td>
+												<td class="inner-cell 36">
+													<span></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="inner-cell 43">
+													<span></span>
+												</td>
+												<td class="inner-cell 44">
+													<span></span>
+												</td>
+												<td class="inner-cell 45">
+													<span></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="inner-cell 52">
+													<span></span>
+												</td>
+												<td class="inner-cell 53">
+													<span></span>
+												</td>
+												<td class="inner-cell 54">
+													<span></span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<table class="inner-board gr">
+										<tbody>
+											<tr>
+												<td class="inner-cell 55">
+													<span></span>
+												</td>
+												<td class="inner-cell 56">
+													<span></span>
+												</td>
+												<td class="inner-cell 57">
+													<span></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="inner-cell 64">
+													<span></span>
+												</td>
+												<td class="inner-cell 65">
+													<span></span>
+												</td>
+												<td class="inner-cell 66">
+													<span></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="inner-cell 73">
+													<span></span>
+												</td>
+												<td class="inner-cell 74">
+													<span></span>
+												</td>
+												<td class="inner-cell 75">
+													<span></span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+								<td>
+									<table class="inner-board">
+										<tbody>
+											<tr>
+												<td class="inner-cell 58">
+													<span></span>
+												</td>
+												<td class="inner-cell 59">
+													<span></span>
+												</td>
+												<td class="inner-cell 60">
+													<span></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="inner-cell 67">
+													<span></span>
+												</td>
+												<td class="inner-cell 68">
+													<span></span>
+												</td>
+												<td class="inner-cell 69">
+													<span></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="inner-cell 76">
+													<span></span>
+												</td>
+												<td class="inner-cell 77">
+													<span></span>
+												</td>
+												<td class="inner-cell 78">
+													<span></span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+								<td>
+									<table class="inner-board gr">
+										<tbody>
+											<tr>
+												<td class="inner-cell 61">
+													<span></span>
+												</td>
+												<td class="inner-cell 62">
+													<span></span>
+												</td>
+												<td class="inner-cell 63">
+													<span></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="inner-cell 70">
+													<span></span>
+												</td>
+												<td class="inner-cell 71">
+													<span></span>
+												</td>
+												<td class="inner-cell 72">
+													<span></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="inner-cell 79">
+													<span></span>
+												</td>
+												<td class="inner-cell 80">
+													<span></span>
+												</td>
+												<td class="inner-cell 81">
+													<span></span>
+												</td>
+											</tr>
+										</tbody>
+									</table>	
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="timer-wrapper">
+					<h2>Timer</h2><button class="btn btn-default" id="pause-timer" >Pause</button>
+					<div id="timer">
+					</div>
+				</div>
+			</div>	
+
+
+			<table cellpadding="0" cellspacing="0" class="dial">
+				<tbody>
+					<tr>
+						<td class="dial-td">1</td>
+						<td class="dial-td">2</td>
+						<td class="dial-td">3</td>
+					</tr>
+					<tr>
+						<td class="dial-td">4</td>
+						<td class="dial-td">5</td>
+						<td class="dial-td">6</td>
+					</tr>
+					<tr>
+						<td class="dial-td">7</td>
+						<td class="dial-td">8</td>
+						<td class="dial-td">9</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<footer>
+				<div class="row footer">
+					<div id="footer-content">
+						<p>Douglas College 2015</p>
+						<p>Student : Oleksandr Dudarenko #300228677</p>
+						<p>Instructor : Stephen Chiong</p>
+					</div>	
+				</div>
+			</footer>
+		
+	</div>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+	<script type="text/javascript" src="js/sweetalert.min.js"></script>
+	<script type="text/javascript" src="js/flipclock.min.js"></script>
+	<script type="text/javascript" src="js/sudoku.js"></script>
+	<script type="text/javascript" src="js/sudoku-interface.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
